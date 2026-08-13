@@ -2239,6 +2239,18 @@ const CONFIG = {
   API_URL: 'https://script.google.com/macros/s/AKfycbx57Mqih746p2RWNOG5_BJ1ZAVhJ0WslqUUe9cSCQgj1pOXR0O43ZC0wbkMfn11Pvmq7g/exec',
 };
 
+/* ---------------- JAM "UPDATE TERAKHIR" ---------------- */
+function updateClockText(){
+  const el = document.getElementById('clockText');
+  if(!el) return;
+  const now = new Date();
+  const tanggal = now.toLocaleDateString('id-ID', { day:'2-digit', month:'long', year:'numeric' });
+  const jam = now.toLocaleTimeString('id-ID', { hour:'2-digit', minute:'2-digit' });
+  el.textContent = `\u{1F550} Update Terakhir : ${tanggal} | ${jam} WIB`;
+}
+updateClockText();
+setInterval(updateClockText, 60000); // perbarui otomatis tiap menit
+
 (function(){
   const dApi = document.getElementById('diagApiUrl');
   if(dApi){
